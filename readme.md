@@ -4,12 +4,15 @@
 Computer Science
 -------------
 Data Structures
+</br>
 C Programming & Lab
 
 Mathematics
 -------------
 Numerical Methods
+</br>
 Linear Algebra I
+</br>
 Probability and Statistics
 
 And More...

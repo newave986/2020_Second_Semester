@@ -1,18 +1,21 @@
 2020 Second Semester
 =============
 
-Computer Science
+:computer: Computer Science
 -------------
 Data Structures
+</br>
 C Programming & Lab
 
-Mathematics
+📐 Mathematics
 -------------
 Numerical Methods
+</br>
 Linear Algebra I
+</br>
 Probability and Statistics
 
-And More...
+:money_with_wings::pray: And More...
 -------------
 #### Economics
 Multinational Corporations & The Global Economy

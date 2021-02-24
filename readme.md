@@ -3,18 +3,18 @@
 
 Computer Science
 -------------
-###### Data Structures
-###### C Programming & Lab
+Data Structures
+C Programming & Lab
 
 Mathematics
 -------------
-###### Numerical Methods
-###### Linear Algebra I
-###### Probability and Statistics
+Numerical Methods
+Linear Algebra I
+Probability and Statistics
 
 And More...
 -------------
 #### Economics
-###### Multinational Corporations & The Global Economy
-#### Christian Studies - Libaral Art
-######Christianity and the World
+Multinational Corporations & The Global Economy
+#### Christian Studies - Liberal Art
+Christianity and the World

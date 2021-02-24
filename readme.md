@@ -17,7 +17,7 @@ Probability and Statistics
 
 :money_with_wings::pray: And More...
 -------------
-#### Economic
+#### Economics
 Multinational Corporations & The Global Economy
 #### Christian Studies - Liberal Art
 Christianity and the World

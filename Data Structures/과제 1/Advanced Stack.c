@@ -1,126 +1,115 @@
-#include <stdio.h> 
-#define MAX_STACK_SIZE 1000 
-#define MAZE_SIZE 15 
+#include<stdio.h>  
+#include<stdlib.h> 
+#include<string.h> 
+#define MAX_STACK_SIZE 10 
+
+typedef char* element; 
 
 typedef struct {
-	short r;
-	short c;
-} Element; 
-
-typedef struct {
-	Element data[MAX_STACK_SIZE];
+	element data[MAX_STACK_SIZE];
 	int top;
 } StackType;
 
-void init_stack(StackType* s) { 
-	s->top = -1; 
+int empty_stack(StackType* s) {	
+	if (s->top == -1)
+		return 1; // 
+	else
+		return 0; // 
 }
 
-int IsEmpty(StackType* s) { 
-	if (s->top == -1)
+int full_stack(StackType* s) { 
+	if (s->top == MAX_STACK_SIZE - 1)
 		return 1;
 	else
 		return 0; 
 }
 
-int IsFull(StackType* s) {
-	if (s->top == MAX_STACK_SIZE - 1)
-		return 1; 
-	else
-		return 0; 
-}
-
-void Push(StackType* s, Element k) {
-	if (IsFull(s)); 
-	else s->data[++(s->top)] = k;
-}
-
-Element Pop(StackType* s) { 
-	if (IsEmpty(s)) {
+void push_stack(StackType* s, element k) {
+	if (full_stack(s))
 		return; 
-	} 
 	else {
-		return s->data[(s->top)--];
+		s->data[(++(s->top))] = k; 
 	} 
 }
 
-Element here = { 1, 0 }; 
-Element entry = { 1, 0 }; 
-
-char maze[MAZE_SIZE + 2][MAZE_SIZE + 2] = {
-	{'1','1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
-	{'1','e', '0', '2', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1','1'},
-	{'1','1', '0', '1', '1', '1', '2', '1', '1', '1', '1', '2', '0', '0', '0', '3','1'},
-	{'1','1', '0', '1', '0', '0', '0', '0', '1', '3', '1', '1', '1', '0', '1', '1','1'},
-	{'1','1', '0', '0', '0', '2', '1', '1', '0', '0', '1', '1', '1', '0', '1', '2','1'},
-	{'1','1', '0', '1', '0', '1', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0','1'},
-	{'1','1', '3', '1', '0', '2', '0', '1', '0', '1', '1', '0', '1', '0', '1', '1','1'},
-	{'1','0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '2', '0', '1', '1','1'},
-	{'1','2', '1', '1', '1', '1', '2', '1', '1', '1', '0', '0', '0', '0', '0', '0','1'},
-	{'1','1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '1', '1', '1', '1', '3','1'},
-	{'1','1', '1', '1', '1', '1', '3', '1', '0', '1', '0', '0', '1', '1', '1', '1','1'},
-	{'1','1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '1', '1', '1', '1', '1','1'},
-	{'1','1', '1', '1', '1', '1', '3', '0', '1', '1', '0', '3', '1', '1', '1', '2','1'},
-	{'1','1', '3', '1', '1', '1', '1', '0', '1', '2', '0', '1', '0', '0', '0', '0','1'},
-	{'1','0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '1', '3', '1', '1', '1','1'},
-	{'1','1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', 'x','1'},
-	{'1','1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1','1'}
-}; 
-
-void push_loc(StackType* s, int r, int c) { 
-	if (r < 0 || c < 0) return;
-	if (maze[r][c] != '1' && maze[r][c] != '.') { 
-		Element tmp; 
-		tmp.r = r; 
-		tmp.c = c; 
-		Push(s, tmp); 
+element pop_stack(StackType* s) { 
+	if (empty_stack(s))
+		return NULL;
+	else {
+		element a = s->data[(s->top)--]; 
+		return a; 
 	}
 }
 
-void maze_print(char maze[MAZE_SIZE + 2][MAZE_SIZE + 2]) { 
-	printf("\n");
-	for (int r = 1; r < MAZE_SIZE + 1; r++) { 
-		for (int c = 1; c < MAZE_SIZE + 1; c++) {
-			printf("%c", maze[r][c]); 
+typedef struct {
+	StackType sOne;
+	StackType sTwo;
+} QueueType; 
+
+void init_queue(QueueType* q) { 
+	q->sOne.top = -1;
+	q->sTwo.top = -1;
+} 
+
+void dequeue(QueueType* q) { 
+	if (empty_stack(&q->sTwo)) { 
+		while (!empty_stack(&(q->sOne))) { 
+			push_stack(&(q->sTwo), pop_stack(&q->sOne)); 
 		}
-		printf("\n");
 	}
+	printf("%s\n", pop_stack(&(q->sTwo))); 
+}
+
+void enqueue(QueueType* q, element k) { 
+	push_stack(&(q->sOne), k); 
+}
+
+void print_stack(StackType* s) { 
+	if (empty_stack(s));
+	else { // 만약 스택 s가 비어 있지 않다면,
+		element copy[20]; 
+		int j = s->top + 1; 
+		for (int k = 0; k < j; k++) {
+			strcpy(copy, s->data[k]); 
+			printf("%s ", copy);
+		} 
+	}
+	printf("\n"); 
+}
+
+void printallstack(QueueType* q) { 
+	printf("입력 스택이 가지고 있는 데이터는: ");
+	print_stack(&q->sOne);
+	printf("출력 스택이 가지고 있는 데이터는: ");
+	print_stack(&q->sTwo); 
+	printf("\n");
 }
 
 int main(void) { 
-	StackType s; 
-	int r, c;
-	int t = 0, w = 0; 
-
-	init_stack(&s); 
-	here = entry; 
-
-	while (maze[here.r][here.c] != 'x') { 
-		r = here.r; 
-		c = here.c;
-		if (maze[r][c] == '2') { 
-			t += 1; 
-		}
-		else if (maze[r][c] == '3') { 
-			w += 1; 
-		}
-		maze[r][c] = '.'; 
-		maze_print(maze); 
-		push_loc(&s, r - 1, c);
-		push_loc(&s, r + 1, c);
-		push_loc(&s, r, c - 1); 
-		push_loc(&s, r, c + 1);
-
-		if (IsEmpty(&s)) { 
-			printf("실패\n"); 
-			return;
-		}
-		else {
-			here = Pop(&s); 
+	QueueType QQQ; 
+	init_queue(&QQQ); 
+	int n; 
+	int k = 0; 
+	printf("입력할 데이터의 수는?: ");
+	scanf_s("%d", &n); 
+	element city; 
+	for (int i = 0; i < n; i++) { 
+		printf("도시 이름: ");
+		city = (element)malloc(sizeof(char) * MAX_STACK_SIZE); 
+		scanf("%s", city); 
+		enqueue(&QQQ, city); 
+		printallstack(&QQQ); 
+		if (i > 0 && i % 5 == 0) { 
+			dequeue(&QQQ); 
+			printallstack(&QQQ); 
+			k++; 
 		}
 	}
-	printf("성공!\n"); 
-	printf("취득한 보물의 갯수는: %d\n이동 중 만난 함정의 갯수는: %d\n총 보물 점수는: %d\n", t, w, t - w);
-
-	return 0; 
+	printf("\n");
+	for (int i = 0; i < (10 - k); i++) { 
+		dequeue(&QQQ); 
+		printallstack(&QQQ); 
+	}
+	free(city); 
+	return 0;
 }

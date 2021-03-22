@@ -11,5 +11,6 @@ Data Structures [📬](https://github.com/newave986/Semester-Assignments/tree/ma
 ### Second-Grade
 [2021-1](https://github.com/newave986/Semester-Assignments/blob/master/2021-1.md)
 
-Object-Oriented Programming 📬
-Web and Text Mining 📬
+Object-Oriented Programming [📬](https://github.com/newave986/Semester-Assignments/tree/master/2021-1%20Object-Oriented%20Programming)
+</br>
+Web and Text Mining [📬]

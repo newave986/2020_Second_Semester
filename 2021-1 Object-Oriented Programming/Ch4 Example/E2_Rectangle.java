@@ -11,6 +11,9 @@ public class E2_Rectangle {
     int width;
     int height;
 
+    // 기본 생성자 없음
+    // 따로 작성하지 않아도 기본적으로 만들어짐
+    
     public int getArea() {
         return width*height;
     }

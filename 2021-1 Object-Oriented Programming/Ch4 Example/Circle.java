@@ -23,8 +23,10 @@ public class Circle {
     // 개발자가 호출하는 메소드가 아니고, 컴파일러가 자동으로 호출하여 알아서 사용함
     // "초기화하는 값"을 설정해 줄 수 있음
 
+    public Circle(int radius) { this.radius = radius; }
+
     // 메소드
     public double getArea() { 
-     return 3.14 * radius * radius;
+        return 3.14 * radius * radius;
     }
 }

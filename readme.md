@@ -13,4 +13,4 @@ Data Structures [📬](https://github.com/newave986/Semester-Assignments/tree/ma
 
 Object-Oriented Programming [📬](https://github.com/newave986/Semester-Assignments/tree/master/2021-1%20Object-Oriented%20Programming)
 </br>
-Web and Text Mining [📬]
+Web and Text Mining [📬](https://github.com/newave986/Semester-Assignments/tree/master/2021-1%20Web%20and%20Text%20Mining)

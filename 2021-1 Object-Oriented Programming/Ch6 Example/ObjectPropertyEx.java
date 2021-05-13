@@ -8,6 +8,11 @@ class Point {
         this.x = x;
         this.y = y;
     }
+    public String toString() {
+        return "Point(" + x + "," + y + ")";
+        // Point 객체를 문자열로 return 하는 toString() 작성한다
+        // 개발자는 자신의 toString()을 오버라이딩한다
+    }
 }
 
 public class ObjectPropertyEx {
@@ -22,3 +27,9 @@ public class ObjectPropertyEx {
         print(p);
     }
 }
+
+// 처음 Object Class에 구현된 toString()이 반환하는 문자열
+
+// public String toString() {
+//    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+// }
